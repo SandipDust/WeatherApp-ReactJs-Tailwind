@@ -7,6 +7,7 @@ import TemperatureAndDetails from './components/TemperatureAndDetails';
 import TimeAndLocation from './components/TimeAndLocation';
 import TopButtons from './components/TopButtons';
 import getWeatherData from './services/WeatherService';
+import Forecast from './components/Forecast';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
        await getWeatherData('weather', query).
        then((data) => {
         setNewWeatherData(data);
+        console.log(data)
        });
       
     
@@ -48,6 +50,9 @@ function App() {
       <div>
         <TimeAndLocation weather={newWeatherData}/>
         <TemperatureAndDetails weather={newWeatherData}/>
+
+          <Forecast items={newWeatherData.forecast} />
+           
       </div>
       )}
     </div>
